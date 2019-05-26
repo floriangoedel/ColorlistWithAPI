@@ -1,0 +1,45 @@
+<style>
+    .options div {
+        width: 20%;
+    }
+
+    .options {
+        width: 100%;
+    }
+
+</style>
+
+<md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <h2 flex md-truncate>Farb-Liste</h2>
+    </div>
+</md-toolbar>
+<div class="options" layout="row" layout-align="space-around center">
+    <div class="search-bar">
+        <md-input-container flex="90">
+            <label>Farbname</label>
+            <input type="text" ng-model="$ctrl.searchbar" ng-change="$ctrl.search()">
+        </md-input-container>
+    </div>
+    <div class="option-buttons">
+
+        <div layout="column" flex="33" flex-sm="100" flex-xs="100" layout-align="center center">
+            <md-menu>
+                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+                    <md-icon>sort</md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item ng-repeat="item in $ctrl.sortingMenueItems">
+                        <md-button ng-click="$ctrl.sortList($index)">
+                            <span md-menu-align-target>sort by </span> {{item}}
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+
+    </div>
+</div>
+<div>
+    <farb-item ng-repeat="e in $ctrl.farbliste" farbe="e"></farb-item>
+</div>

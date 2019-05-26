@@ -1,0 +1,29 @@
+<style>
+    #farb-preview {
+        border: black solid 2px;
+        width: 6rem;
+        height: 2rem;
+    }
+
+    .farb-items {
+        margin-top: 1rem;
+    }
+
+    .farb-name {
+        margin-left: 1rem;
+    }
+
+    .farb-hex-number {
+        text-align: center;
+    }
+
+</style>
+<div layout="row" class="farb-items">
+    <span flex="30" class="farb-name">{{ $ctrl.farbe.name }}</span>
+    <div flex="40" style="background-color: {{ $ctrl.farbeInHex }};" id="farb-preview">
+        <span class="farb-hex-number" style="{{ $ctrl.farbe.helligkeit() &lt; 128 ? 'white' : 'black' }}">{{ $ctrl.farbeInHex }}</span>
+    </div>
+    <md-button ui-sref="farb-editor({ farbe: $ctrl.farbe })">
+        <md-icon>edit</md-icon>
+    </md-button>
+</div>

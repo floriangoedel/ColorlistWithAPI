@@ -1,0 +1,105 @@
+<style>
+
+    .colour-preview span {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .colour-preview {
+        width: 15rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+        height: 6rem;
+    }
+
+    .success {
+        color: green;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .sliders {
+        margin: 2rem;
+    }
+
+</style>
+<div>
+    <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+            <h2 flex md-truncate>Farb-Editor</h2>
+        </div>
+    </md-toolbar>
+
+    <div class="tool-header" md-primary>
+        <md-button ui-sref="farb-liste">
+            <md-icon>keyboard_backspace</md-icon>
+        </md-button>
+    </div>
+    <div class="sliders">
+        <div layout="row">
+            <md-input-container flex="20">
+                <label>{{ $ctrl.farbe.name }}</label>
+                <input type="text"
+                       ng-model="$ctrl.name">
+            </md-input-container>
+
+            <div class="colour-preview" style="background-color: {{ $ctrl.localHexWert }}">
+                <span style="color: {{ $ctrl.farbe.helligkeit()}}">{{ $ctrl.farbe.hexWert() }}</span>
+            </div>
+            <div>
+                <md-button ng-click="$ctrl.saveColor()">
+                    <md-icon>save</md-icon>
+                </md-button>
+                <span class="success">{{ $ctrl.success }}</span>
+                <span class="error">{{ $ctrl.error }}</span>
+            </div>
+        </div>
+
+        <div class="rgb-wert" layout="row" layout-align="start center">
+            <md-input-container flex="20">
+                <label>Red</label>
+                <input type="number"
+                       ng-model="$ctrl.red"
+                       ng-change="$ctrl.farbAnpassung()">
+            </md-input-container>
+
+            <md-slider flex min="0" max="255"
+                       ng-model="$ctrl.red"
+                       ng-change="$ctrl.farbAnpassung()">
+            </md-slider>
+        </div>
+
+        <div class="rgb-wert" layout="row" layout-align="start center">
+            <md-input-container flex="20">
+                <label>Green</label>
+                <input type="number"
+                       ng-model="$ctrl.green"
+                       ng-change="$ctrl.farbAnpassung()">
+            </md-input-container>
+
+            <md-slider flex min="0" max="255"
+                       ng-model="$ctrl.green"
+                       ng-change="$ctrl.farbAnpassung()">
+            </md-slider>
+        </div>
+
+        <div class="rgb-wert" layout="row" layout-align="start center">
+            <md-input-container flex="20">
+                <label>Blue</label>
+                <input type="number"
+                       ng-model="$ctrl.blue"
+                       ng-change="$ctrl.farbAnpassung()">
+            </md-input-container>
+
+            <md-slider flex min="0" max="255"
+                       ng-model="$ctrl.blue"
+                       ng-change="$ctrl.farbAnpassung()">
+            </md-slider>
+        </div>
+    </div>
+</div>
